@@ -28,8 +28,8 @@
                     @forelse ($data as $key => $row)
                         
                     <tr>
-                        <td>{{ $row->fname }}</td>
-                        <td>{{ $row->lname }}</td>
+                        <td>{{ $row->first_name }}</td>
+                        <td>{{ $row->last_name }}</td>
                         <td>{{ $row->mobile }}</td>
                         <td>{{ $row->message }}</td>
                     </tr>   

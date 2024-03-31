@@ -545,7 +545,7 @@
                             <span id="gt" class="text-danger font-weight-bold">
                             @error('class_id')
                                     <span>{{ $message }}</span>
-                                @enderror
+                            @enderror
                             </span>
                         </div>
                         <div class="text-center">
@@ -591,7 +591,7 @@
         }
         //   mobile validation start
         if (mobile == "") {
-            document.getElementById('mb').innerHTML = "Please enter your mobile Number";
+            document.getElementById('mb').innerHTML = "Please enter your mobile number";
             return false;
         } else {
             document.getElementById('mb').innerHTML = "";
@@ -611,7 +611,7 @@
             document.getElementById('mb').innerHTML = "";
         }
         if (mobile.search(/^[6-9]\d{9}$/gi)) {
-            document.getElementById('mb').innerHTML = "Invalid mobile number !!";
+            document.getElementById('mb').innerHTML = "Invalid mobile number!";
             return false;
         } else {
             document.getElementById('mb').innerHTML = "";

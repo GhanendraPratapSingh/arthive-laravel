@@ -4,7 +4,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index">
                 <div class="sidebar-brand-icon rotate-n-15">
-                  <img src="img/logo.png" alt="logo" width="100" height="auto"><img>
+                  <img src="{{asset('/assets/img/logo.png')}}" alt="logo" width="100" height="auto"><img>
                 </div>
                 <div class="sidebar-brand-text mx-3"> Admin Panel </div>
             </a>
@@ -53,7 +53,12 @@
                     <span>Contact Us </span></a>
             </li>
             
-            
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/admin/events')}}">
+                   
+                    <i class="fas  fa-fw fa-clipboard"></i>
+                    <span>Events </span></a>
+            </li>
             
             
 

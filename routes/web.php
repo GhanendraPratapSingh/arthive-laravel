@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +48,7 @@ Route::get('/a-long-term-program',function(){
 });
 
 
+
 Route::controller(BookingController::class)->group(function(){
 
     Route::get('/calender-art-hour','getKidsCalender')->name('ArtHour.Calender');
@@ -71,9 +73,7 @@ Route::controller(RegistrationController::class)->group(function(){
 });
 
 
-Route::get('/workshop-calender',function(){
-    return view('calender2');
-});
+Route::get('/events-calender',[EventController::class,'getEventCalender'])->name('events.calender');
 
 Route::get('/book-now',function(){
     return view('book2');
@@ -90,19 +90,9 @@ Route::get('/book-now-2',function(){
 
 Route::get('admin/',[AdminController::class,'index']);
 Route::prefix('admin')->controller(AdminController::class)->group(function(){
-    
-    Route::get('/',function(){
-        dd('ye');
-
-    })->name('admin.index');
-    // Route::fallback(function () {
-    //     // Handle the case where there's no matching route
-    //     dd('fd');
-    // });
     Route::get('/login','index')->name('login');
-
-    
     Route::post('/admin-login','AdminLogin')->name('admin.login');
+
     Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard',function(){
             return view('admin.welcome');
@@ -116,9 +106,16 @@ Route::prefix('admin')->controller(AdminController::class)->group(function(){
         Route::post('/save-mannual-booking','saveManualBooking')->name('admin.mannual.register');
         Route::get('/contact-us','getContactUsData')->name('admin.contactUs');
         // Route::get('/{any}','index')->where('any', '.*');
+        //event route
+
+        Route::resource('/events',EventController::class);
     });
 
 });
 
-
+Route::get('/{any}', function () {
+    return view('index');
+});
 // Route::fallback('App\Http\Controllers\HomeController@index')->name('fallback');
+
+

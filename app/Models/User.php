@@ -15,4 +15,17 @@ class User extends Model
         'mobile',
         'user_type'
     ];
+
+    public function getClassRegistredUser(){
+        return $this->hasMany(ClassRegistration::class);
+    }
+
+    public function getArtWorkSubscribedUser(){
+        return $this->hasMany(ArtWorkSubscription::class);
+    }
+
+    public function getSlotBookedUser(){
+        return $this->hasMany(Booking::class);
+    }
+    
 }

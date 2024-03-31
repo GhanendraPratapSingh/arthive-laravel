@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Artwork;
 use App\Models\Booking;
+use App\Models\ClassRegistration;
 use App\Models\ContactUs;
 use App\Models\Registration;
 use App\Models\User;
@@ -30,7 +31,7 @@ class AdminController extends Controller
         // dd(Hash::make("Admin123@2022"));
         $pwd = "Admin123@2022";
         $validation = $request->validate([
-            'admin_email' => ['required', 'email','exists:admin_login,admin_email'],
+            'admin_email' => ['required', 'email','exists:admins,email'],
             'password' => ['required'],
         ],[
             'admin_email.required'=>'Please enter your email!',
@@ -39,12 +40,12 @@ class AdminController extends Controller
         ]);
 
         $credentials = [
-            'admin_email' => $request->post("admin_email"),
+            'email' => $request->post("admin_email"),
             'password' =>  $request->post("password"),
         ];
 
         // dd($request->all());
-        $admin = Admin::where('admin_email', $request->post("admin_email"))->first();
+        $admin = Admin::where('email', $request->post("admin_email"))->first();
         // dd($admin->password);
         // dd(Hash::check($request->password, $admin->password));
         // dd(auth()->guard('admin')->attempt($credentials));
@@ -91,7 +92,7 @@ class AdminController extends Controller
 
     public function getRegisteredUser(Request $request)
     {
-        $data = Registration::get();
+        $data = User::get();
         // dd($data);
         return view('admin.register_customer',compact('data'));
     }
@@ -129,7 +130,7 @@ class AdminController extends Controller
             'timeslot' => ['required']
         ]);
 
-        $booking = Booking::where(['date'=>$request->date,'timeslot' => $request->timeslot])->first();
+        $booking = Booking::where(['slot_date'=>$request->date,'slot_time' => $request->timeslot])->first();
         if($booking){
             Session::flash('bookedError', "Already Booked");
             return Redirect::back();
@@ -148,4 +149,6 @@ class AdminController extends Controller
         $data = ContactUs::get();
         return view('admin.contact_us',compact('data'));
     }
+
+   
 }

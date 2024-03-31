@@ -10,6 +10,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Razorpay\Api\Api;
@@ -27,7 +28,7 @@ class BookingController extends Controller
             $month = $request->month ?? (clone $now)->format('m');
             $year = $request->year ?? (clone $now)->format('Y');
 
-            $selectedDate = ($now)->year($year)->month($month)->day(1);
+            $selectedDate = Carbon::createFromDate($year,$month,1);
             $previousDate =  (clone $selectedDate)->subMonth();
             $nextDate =  (clone $selectedDate)->addMonth();
 
@@ -57,6 +58,13 @@ class BookingController extends Controller
 
     public function saveKidsSlotData(Request $request)
     {
+        $validation = $request->validate([
+            'name' => ['required'],
+            'mobile' => ['required'],
+            'timeslot' => ['required'],
+            'quantity' =>['required'],
+            'email' => ['required'],
+        ]);
 
         try {
 
@@ -67,13 +75,6 @@ class BookingController extends Controller
             $timeslot = $request->timeslot ?? "";
             $quantity = $request->quantity;
             $email = $request->email;
-            // $validation = $request->validate([
-            //     'name' => ['required'],
-            //     'mobile' => ['required'],
-            //     'timeslot' => ['required'],
-            //     'quantity' =>['required'],
-            //     'email' => ['required'],
-            // ]);
             $bookedSlotsQuantity = Booking::where(['slot_date' => $date, 'slot_time' => $timeslot])->sum('quantity');
 
             if ($quantity > 10) {
@@ -155,6 +156,7 @@ class BookingController extends Controller
                 // }
             }
         } catch (Throwable $e) {
+            return back();
             dd($e->getMessage());
         }
     }
@@ -184,73 +186,87 @@ class BookingController extends Controller
     public function dKidsInitiatePayment(Request $request)
     {
 
-
-        $price = $request->price ?? 0;
-        $amount = $price * 100;
-
-
-        $razorpaySecretId = config('globals.razorpay_secret_id');
-        $razorpaySecretKey = config('globals.razorpay_secret_key');
-        $api = new Api($razorpaySecretId, $razorpaySecretKey);
-        $userType = $request->user_type ?? 'KIDS_USER';
-        $orderType = $request->order_type ?? 'KIDS_ART';
-
-        $dateArray = [
-            'receipt' =>  'order_receipt_' . uniqid(),
-            'amount' => $amount,
-            'currency' => 'INR',
-            'notes' => array('Section' => 'kids')
-        ];
-        $userModel = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'mobile' => $request->mobile,
-            'user_type' => $userType,
-        ]);
-
-
-        $createOrder = $api->order->create($dateArray);
-
-        $paymentModel = Payment::create([
-            'user_id' => $userModel->id,
-            'order_id' => $createOrder->receipt,
-            'razorpay_payment_id' => null,
-            'razorpay_order_id' => $createOrder->id,
-            'payment_amount' => $price,
-            'payment_mode' => 'online',
-            'order_type' => $orderType,
-            'payment_status' => 'pending'
-        ]);
-
-        $artHourSubscription = ArtWorkSubscription::create([
-            'user_id' => $userModel->id,
-            'payment_id' => $paymentModel->id,
-            'type' => $orderType
-        ]);
-
-        // $dateArray['order_id'] = $createOrder->id;
-        // $dateArray['apiKey'] = $razorpaySecretId;
-        // $dateArray['receipt'] =  $createOrder->receipt;
-        $dateArray = [
-            'amount' => $amount,
-            'order_id' => $createOrder->id,
-            'apiKey' => $razorpaySecretId,
-            'receipt' => $createOrder->receipt,
-            'name' => $request->name,
-            'email' => $request->email,
-            'mobile' => $request->mobile,
-            'user_type' => $userType,
-            'payment_id' => $paymentModel->id,
-            'content_type' =>$userType
-        ];
-
-
-
-        if ($price <= 0) {
-            return redirect()->back();
+        try {
+            //code...
+            DB::beginTransaction();
+            //regex:/(0)[0-9]/|not_regex:/[a-z]/
+            $validation = $request->validate([
+                'name' => "required|",
+                'mobile' => "required|digits:10",
+                'email' => "required|email",
+            ]);
+            $price = $request->price ?? 0;
+            $amount = $price * 100;
+    
+    
+            $razorpaySecretId = config('globals.razorpay_secret_id');
+            $razorpaySecretKey = config('globals.razorpay_secret_key');
+            $api = new Api($razorpaySecretId, $razorpaySecretKey);
+            $userType = $request->user_type ?? 'KIDS_USER';
+            $orderType = $request->order_type ?? 'KIDS_ART';
+    
+            $dateArray = [
+                'receipt' =>  'order_receipt_' . uniqid(),
+                'amount' => $amount,
+                'currency' => 'INR',
+                'notes' => array('Section' => 'kids')
+            ];
+            $userModel = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'mobile' => $request->mobile,
+                'user_type' => $userType,
+            ]);
+    
+    
+            $createOrder = $api->order->create($dateArray);
+    
+            $paymentModel = Payment::create([
+                'user_id' => $userModel->id,
+                'order_id' => $createOrder->receipt,
+                'razorpay_payment_id' => null,
+                'razorpay_order_id' => $createOrder->id,
+                'payment_amount' => $price,
+                'payment_mode' => 'online',
+                'order_type' => $orderType,
+                'payment_status' => 'pending'
+            ]);
+    
+            $artHourSubscription = ArtWorkSubscription::create([
+                'user_id' => $userModel->id,
+                'payment_id' => $paymentModel->id,
+                'type' => $orderType
+            ]);
+    
+            // $dateArray['order_id'] = $createOrder->id;
+            // $dateArray['apiKey'] = $razorpaySecretId;
+            // $dateArray['receipt'] =  $createOrder->receipt;
+            $dateArray = [
+                'amount' => $amount,
+                'order_id' => $createOrder->id,
+                'apiKey' => $razorpaySecretId,
+                'receipt' => $createOrder->receipt,
+                'name' => $request->name,
+                'email' => $request->email,
+                'mobile' => $request->mobile,
+                'user_type' => $userType,
+                'payment_id' => $paymentModel->id,
+                'content_type' =>$userType
+            ];
+    
+    
+    
+            if ($price <= 0) {
+                return redirect()->back();
+            }
+    
+            DB::commit();
+            return view('payment.payment', $dateArray);
+        } catch (\Throwable $th) {
+            DB::rollback();
+            dd($th->getMessage());
+            return back();
         }
-
-        return view('payment.payment', $dateArray);
     }
 
     public function dKidsConnfirmPayment(Request $request)

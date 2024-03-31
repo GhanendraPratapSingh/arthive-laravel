@@ -5,6 +5,7 @@ use App\Models\ClassList;
 use App\Models\KidsClass;
 use App\Models\TimeSlot;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
     function getWeekDays(){
         $daysOfWeek = array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday');
@@ -99,5 +100,26 @@ use Carbon\Carbon;
             'KIDS_CLASS_REGISTER'=>'Payment Successfully!',
             default => '',
         };
+    }
+
+    function getImagePath($path='',$type=''){
+        if(empty($path) || empty($type)){
+            return "";
+        }
+        switch($type){
+            case 'EVENT_CALENDER':
+                $imagePath = "/assets/img/event-calender/".$path;
+                if(Storage::disk('public')->exists($imagePath)){
+                    return "/storage/".$imagePath;
+                }
+                break;
+
+            default: 
+             return "";
+        }
+    }
+
+    function getDayName($year,$month,$day){
+        return  substr(Carbon::createFromDate($year,$month,$day)->format('D'),0,3);
     }
 ?>

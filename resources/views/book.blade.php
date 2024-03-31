@@ -174,13 +174,13 @@
       </h1>
       <hr>
       @if (Session::has('bookingError'))
-          <h2>{{ Session::get('bookingError') }}</h2>
-        @endif
+      <h2>{{ Session::get('bookingError') }}</h2>
+      @endif
       <div class="row">
         <div class="col-md-12">
-        @if (Session::has('bookingError'))
+          @if (Session::has('bookingError'))
           <div class='alert alert-danger'>{{ Session::get('bookingError') }}</div>
-        @endif
+          @endif
         </div>
 
         @forelse(getTimeSlots() as $slot)
@@ -196,7 +196,7 @@
 
             @else
             <button class="btn btn-success  book" data-timeslot="{{$slot->slot_title}}" title="Book this time slot ">
-            {{$slot->slot_title}}
+              {{$slot->slot_title}}
             </button>
             @endif
           </div>
@@ -221,7 +221,7 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-md-12">
-              <form action="{{route('timeslot.bookingDetails')}}" method="post">
+              <form action="{{route('timeslot.bookingDetails')}}" method="post" name="myForm" onsubmit="return validateSlotBookingForm()">
                 @csrf
                 <input type="hidden" name="date" value="{{$date}}" />
                 <div class="form-group">
@@ -230,15 +230,18 @@
                 </div>
                 <div class="form-group">
                   <label for="">Name</label>
-                  <input required type="text" class="form-control" name="name">
+                  <input type="text" class="form-control" name="name">
+                  <span id="username_error" class="text-danger font-weight-bold"></span>
                 </div>
                 <div class="form-group">
                   <label for="">Mobile</label>
-                  <input required type="text" class="form-control" name="mobile">
+                  <input type="text" class="form-control" name="mobile">
+                  <span id="mobile_error" class="text-danger font-weight-bold"></span>
                 </div>
                 <div class="form-group">
                   <label for="">Email</label>
-                  <input required type="email" class="form-control" name="email">
+                  <input type="email" class="form-control" name="email">
+                  <span id="email_error" class="text-danger font-weight-bold"></span>
                 </div>
 
                 <div class="row">
@@ -270,12 +273,19 @@
 
     </div>
   </div>
+  @if (count($errors) > 0)
+  <script>
+    $(document).ready(function() {
+
+      $("#myModal").modal("show");
+    });
+    console.log('errorFound')
+  </script>
+  @endif
   @include('footer')
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script type="text/javascript">
     window.onload = function() {
       var tblFruits = document.getElementById("tblFruits");
@@ -337,7 +347,94 @@
       decrementValue(e);
     });
   </script>
+  <script>
+    function validateSlotBookingForm() {
+      try {
+        let username = document.forms["myForm"]["name"].value;
+        let mobile = document.forms["myForm"]["mobile"].value;
+        let emailValue = document.forms["myForm"]["email"].value;
+        // console.log('emialIs',emailValue);
 
+
+        if (username == "") {
+          document.getElementById('username_error').innerHTML = "Please enter your name";
+          return false;
+        }
+        if ((username.length < 2) || (name.length > 35)) {
+          document.getElementById('username_error').innerHTML = "User name must be atleast 2 characters";
+          return false;
+        } else {
+          document.getElementById('username_error').innerHTML = "";
+        }
+        if (!isNaN(username)) {
+          document.getElementById('username_error').innerHTML = "Only characters are allowed";
+          return false;
+        } else {
+          document.getElementById('username_error').innerHTML = "";
+        }
+
+
+        if (username.search(/^[A-Za-z\s]+$/)) {
+          document.getElementById('username_error').innerHTML = "Only characters are allowed";
+          return false;
+        } else {
+          document.getElementById('username_error').innerHTML = "";
+        }
+        //   mobile validation start
+        if (mobile == "") {
+          document.getElementById('mobile_error').innerHTML = "Please enter your mobile number";
+          return false;
+        } else {
+          document.getElementById('mobile_error').innerHTML = "";
+
+        }
+        if (isNaN(mobile)) {
+
+          document.getElementById('mobile_error').innerHTML = "Only digits are allowed";
+          return false;
+        } else {
+          document.getElementById('mobile_error').innerHTML = "";
+        }
+
+        if ((mobile.length < 10) || (mobile.length > 10)) {
+          document.getElementById('mobile_error').innerHTML = "Mobile number must be 10 digits only";
+          return false;
+        } else {
+          document.getElementById('mobile_error').innerHTML = "";
+        }
+
+        if (mobile.search(/^[6-9]\d{9}$/gi)) {
+          document.getElementById('mobile_error').innerHTML = "Invalid mobile number!";
+          return false;
+        } else {
+          document.getElementById('mobile_error').innerHTML = "";
+        }
+
+        console.log('emailSecondIs', emailValue)
+        if (emailValue == "") {
+          document.getElementById('email_error').innerHTML = "Please enter your email";
+          return false;
+        } else {
+          document.getElementById('email_error').innerHTML = "";
+        }
+
+        if (emailValue.search(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) < 0) {
+          document.getElementById('email_error').innerHTML = "Please enter a valid email";
+          return false;
+        } else {
+          document.getElementById('email_error').innerHTML = "";
+        }
+
+      } catch (error) {
+        console.log('errorIs', error);
+        return false;
+      }
+
+      //    return false;
+
+
+    }
+  </script>
 
 </body>
 
