@@ -230,17 +230,17 @@
                 </div>
                 <div class="form-group">
                   <label for="">Name</label>
-                  <input type="text" class="form-control" name="name">
+                  <input type="text" class="form-control" name="name" required>
                   <span id="username_error" class="text-danger font-weight-bold"></span>
                 </div>
                 <div class="form-group">
                   <label for="">Mobile</label>
-                  <input type="text" class="form-control" name="mobile">
+                  <input type="text" class="form-control" name="mobile" required>
                   <span id="mobile_error" class="text-danger font-weight-bold"></span>
                 </div>
                 <div class="form-group">
                   <label for="">Email</label>
-                  <input type="email" class="form-control" name="email">
+                  <input type="email" class="form-control" name="email" required>
                   <span id="email_error" class="text-danger font-weight-bold"></span>
                 </div>
 

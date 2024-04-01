@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ArtWorkSubscription;
-use App\Models\Bookedtimeslot;
-use App\Models\Booking;
+use App\Models\UserSubscribedPlan;
+use App\Models\SlotBooking;
 use App\Models\Payment;
 use App\Models\User;
 use Carbon\Carbon;
@@ -75,7 +74,7 @@ class BookingController extends Controller
             $timeslot = $request->timeslot ?? "";
             $quantity = $request->quantity;
             $email = $request->email;
-            $bookedSlotsQuantity = Booking::where(['slot_date' => $date, 'slot_time' => $timeslot])->sum('quantity');
+            $bookedSlotsQuantity = SlotBooking::where(['slot_date' => $date, 'slot_time' => $timeslot])->sum('quantity');
 
             if ($quantity > 10) {
                 Session::flash('bookingError', "Only 10 slots can be booked at a time");
@@ -129,7 +128,7 @@ class BookingController extends Controller
                         'booking_type' => 'KIDS_SLOT',
 
                     ];
-                    $createBooking = Booking::create($bookingData);
+                    $createBooking = SlotBooking::create($bookingData);
                     $dateArray = [
                         'amount' => $amount,
                         'order_id' => $createOrder->id,
@@ -156,7 +155,7 @@ class BookingController extends Controller
                 // }
             }
         } catch (Throwable $e) {
-            return back();
+            // return back();
             dd($e->getMessage());
         }
     }
@@ -183,6 +182,53 @@ class BookingController extends Controller
         }
         return view('payment.information', compact('price', 'user_type', 'order_type', 'content_type'));
     }
+    public function creativeToddlerPaymentShow(Request $request)
+    {
+        $price = $request->price ?? 0;
+        $order_type = 'CREATIVE_TODDLER_ART';
+        $user_type = 'CREATIVE_TODDLER_USER';
+        $content_type = 'CREATIVE_TODDLER_ART_SUBSCRIPTION';
+        if ($price <= 0) {
+            return redirect()->back();
+        }
+        return view('payment.information', compact('price', 'user_type', 'order_type', 'content_type'));
+    }
+    public function theLittleProjectPaymentShow(Request $request)
+    {
+        $price = $request->price ?? 0;
+        $order_type = 'THE_LITTLE_PROJECT';
+        $user_type = 'THE_LITTLE_PROJECT_USER';
+        $content_type = 'THE_LITTLE_PROJECT_SUBSCRIPTION';
+        if ($price <= 0) {
+            return redirect()->back();
+        }
+        return view('payment.information', compact('price', 'user_type', 'order_type', 'content_type'));
+    }
+    public function theColorWorldPaymentShow(Request $request)
+    {
+        $price = $request->price ?? 0;
+        $order_type = 'THE_COLOR_WOLRD';
+        $user_type = 'THE_COLOR_WOLRD_USER';
+        $content_type = 'THE_COLOR_WOLRD_SUBSCRIPTION';
+        if ($price <= 0) {
+            return redirect()->back();
+        }
+        return view('payment.information', compact('price', 'user_type', 'order_type', 'content_type'));
+    }
+    public function youngArtistClubPaymentShow(Request $request)
+    {
+        $price = $request->price ?? 0;
+        $order_type = 'YOUNG_ARTIST_CLUB';
+        $user_type = 'YOUNG_ARTIST_USER';
+        $content_type = 'YOUNG_ARTIST_SUBSCRIPTION';
+        if ($price <= 0) {
+            return redirect()->back();
+        }
+        return view('payment.information', compact('price', 'user_type', 'order_type', 'content_type'));
+    }
+    
+    
+    
     public function dKidsInitiatePayment(Request $request)
     {
 
@@ -232,7 +278,7 @@ class BookingController extends Controller
                 'payment_status' => 'pending'
             ]);
     
-            $artHourSubscription = ArtWorkSubscription::create([
+            $artHourSubscription = UserSubscribedPlan::create([
                 'user_id' => $userModel->id,
                 'payment_id' => $paymentModel->id,
                 'type' => $orderType

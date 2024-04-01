@@ -705,11 +705,7 @@
 
     </div>
 
-
-
-    <?php
-    include('footer.php')
-      ?>
+  @include('footer')
 
     <script>
       // Code By Webdevtrick ( https://webdevtrick.com )

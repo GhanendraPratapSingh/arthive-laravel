@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('booked_time_slots', function (Blueprint $table) {
+        Schema::create('subscription_plans', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
-            $table->string('payment_id');
-            $table->date('date');
-            $table->string('timeslot');
+            $table->float('price',8,2);
+            $table->string('title');
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('booked_time_slots');
+        Schema::dropIfExists('subscription_plans');
     }
 };

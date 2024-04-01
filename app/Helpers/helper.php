@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\BookedTimeSlot;
+use App\Models\SlotBooking;
 use App\Models\ClassList;
 use App\Models\KidsClass;
 use App\Models\TimeSlot;
@@ -73,9 +73,9 @@ use Illuminate\Support\Facades\Storage;
     }
     function getBookedTimeSlots($date){
         $finalData = [];
-        $bookedSlots = BookedTimeSlot::where('date',$date)->select('timeslot')->get();
+        $bookedSlots = SlotBooking::where('slot_date',$date)->select('slot_time')->get();
         if(count($bookedSlots)>0){
-            $finalData = array_column($bookedSlots->toArray(),'timeslot');
+            $finalData = array_column($bookedSlots->toArray(),'slot_time');
         }
         return $finalData;
     }

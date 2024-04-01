@@ -5,12 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ArtWorkSubscription extends Model
+class SlotBooking extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'user_id',
-        'payment_id',
-        'type'
-    ];
+    protected $fillable =['id','user_id','payment_id','slot_date','slot_time','quantity','booking_type'];
 }

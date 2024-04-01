@@ -40,6 +40,49 @@ Route::get('/d-kids-art-labs',function(){
 Route::get('/d-toddler-labs',function(){
     return view('toddler.d-toddler-labs');
 });
+Route::get('/d-long-term-program',function(){
+    return view('d-long-term-program');
+});
+
+Route::get('/the-color-world',function(){
+    return view('the-color-world');
+});
+Route::get('/the-little-project',function(){
+    return view('the-little-project');
+});
+Route::get('/creative-toddler-program',function(){
+    return view('creative-toddler-program');
+});
+
+Route::get('/d-kids-weekend-program',function(){
+    return view('d-kids-weekend-program');
+});
+Route::get('/easter-sensory',function(){
+    return view('easer-sensory');
+});
+Route::get('/young-artist-club',function(){
+    return view('young-artist-club');
+});
+Route::get('/private-art-party',function(){
+    return view('private-art-party');
+});
+
+Route::get('/wall-art-workshop',function(){
+    return view('wall-art-workshop');
+});
+
+
+
+
+
+
+Route::get('/a-weekend-program',function(){
+    return view('a-weekend-program');
+});
+
+
+
+
 Route::get('/a-art-cafe',function(){
     return view('adults.a-art-cafe');
 });
@@ -59,6 +102,11 @@ Route::controller(BookingController::class)->group(function(){
     // kids information
     Route::post('/kids-payment-page','dKidsPaymentShow')->name('kids.payment.information.show');
     Route::post('/toddler-payment-page','toddlerPaymentShow')->name('toddler.payment.information.show');
+    Route::post('/creative-toddler-payment-page','creativeToddlerPaymentShow')->name('creativetoddler.payment.information.show');
+    Route::post('/little-project-payment-page','theLittleProjectPaymentShow')->name('theLittleProject.payment.information.show');
+    Route::post('/the-color-world-payment-page','theColorWorldPaymentShow')->name('theColorWorld.payment.information.show');
+    Route::post('/young-artist-club-payment-page','youngArtistClubPaymentShow')->name('youngArtistClub.payment.information.show');
+
     Route::post('/artwork-initiate-payment','dKidsInitiatePayment')->name('artwork.initiatePayment');
     Route::post('/artwork-connfirm-payment','dKidsConnfirmPayment')->name('artwork.payment.validate');
 });

@@ -278,4 +278,4 @@
 </div>
 </section>
 
-@include('footer2')
+@include('footer')

@@ -20,7 +20,7 @@ class RegistrationController extends Controller
         DB::beginTransaction();
         $validation = $request->validate([
             'name' => "required|",
-            'age' => "required|numeric|size:2",
+            'age' => "required|numeric",
             'mobile' => "required|digits:10|regex:/(0)[0-9]/|not_regex:/[a-z]/",
             'email' => "required|email",
             'class_id' => "required|exists:class_lists,id",

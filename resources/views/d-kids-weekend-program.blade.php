@@ -11,7 +11,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Long Term Program</title>
+    <title>Weekend Programs</title>
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -210,7 +210,7 @@
       }
 
       .card-row-long-term .long-term-button {
-        background-color: pink;
+        background-color: #fea1c0;
         color: #000;
         border: none;
         border-radius: 5px;
@@ -220,7 +220,7 @@
       }
 
       .card-row-long-term .long-term-button:hover {
-        background-color: pink;
+        background-color: #fea1c0;
       }
       @media only screen and (max-width: 768px) {
         .card-row-long-term {
@@ -265,40 +265,41 @@
     <!-- Swiper JS -->
 
     <!-- ---------------------Long Term Program----------------------- -->
-    <h2 style="text-align: center">Long Term Programs</h2>
+    <h2 style="text-align: center">Weekend Programs</h2>
     <br />
     <h4 style="text-align: center">
-      Sign up your mini artist for our creativity-igniting art sessions!
+      Special weekend art sessions to sprinkle joy on your<br />
+      little one like confetti!
     </h4>
     <br />
     <div class="card-row-long-term">
       <div class="card">
         <img src="{{asset('/assets/img/bg/1.jpg')}}" alt="Image 1" />
         <div class="content">
-          <h5>Creative Toddler Program</h5>
-          <p>1-3 years</p>
-          <span>1 hour x 8 sessions </span><br />
-          <a class="long-term-button" href="{{url('/creative-toddler-program')}}">Learn More</a>
+          <h5>Easter Sensory Play</h5>
+          <p>1-6 years</p>
+          <span>4:00-5:00pm </span><br />
+          <a class="long-term-button" href="{{url('/easter-sensory')}}">Learn More</a>
         </div>
       </div>
 
       <div class="card">
         <img src="{{asset('/assets/img/bg/1.jpg')}}" alt="Image 2" />
         <div class="content">
-          <h5>The Little Project</h5>
-          <p>2-4 years</p>
-          <span>1 hour x 8 sessions </span><br />
-          <a class="long-term-button" href="{{url('/the-little-project')}}">Learn More</a>
+          <h5>Pyjama Rainbow Party</h5>
+          <p>1-6years</p>
+          <span>5:00-6:00pm </span><br />
+          <button class="long-term-button">Learn More</button>
         </div>
       </div>
 
       <div class="card">
         <img src="{{asset('/assets/img/bg/1.jpg')}}" alt="Image 3" />
         <div class="content">
-          <h5>The Colour World</h5>
-          <p>4-7 years</p>
-          <span>1 hour x 8 sessions </span><br />
-          <a class="long-term-button" href="{{url('/the-color-world')}}">Learn More</a>
+          <h5>Eat & Paint:Cupcake</h5>
+          <p>4-12years</p>
+          <span>4:00-5:00pm </span><br />
+          <button class="long-term-button">Learn More</button>
         </div>
       </div>
     </div>
@@ -306,116 +307,37 @@
       <div class="card">
         <img src="{{asset('/assets/img/bg/1.jpg')}}" alt="Image 1" />
         <div class="content">
-          <h5>Creative Toddler Program</h5>
-          <p>1-3 years</p>
-          <span>1 hour x 8 sessions </span><br />
-          <a class="long-term-button" href="{{url('/creative-toddler-program')}}">Learn More</a>
+          <h5>Crackling Colours Party</h5>
+          <p>2-6 years</p>
+          <span>4:00-5:00pm </span><br />
+          <button class="long-term-button">Learn More</button>
         </div>
       </div>
 
       <div class="card">
         <img src="{{asset('/assets/img/bg/1.jpg')}}" alt="Image 2" />
         <div class="content">
-          <h5>The Little Project</h5>
-          <p>2-4 years</p>
-          <span>1 hour x 8 sessions </span><br />
-          <a class="long-term-button" href="{{url('/the-little-project')}}">Learn More</a>
+          <h5>Story+Art</h5>
+          <p>4-10years</p>
+          <span>5:00-6:00pm </span><br />
+          <button class="long-term-button">Learn More</button>
         </div>
       </div>
 
       <div class="card">
         <img src="{{asset('/assets/img/bg/1.jpg')}}" alt="Image 3" />
         <div class="content">
-          <h5>The Colour World</h5>
-          <p>4-7 years</p>
-          <span>1 hour x 8 sessions </span><br />
-          <a class="long-term-button" href="{{url('/the-color-world')}}">Learn More</a>
+          <h5>Super hero Art Party</h5>
+          <p>3-10years</p>
+          <span>4:00-5:00pm </span><br />
+          <button class="long-term-button">Learn More</button>
         </div>
       </div>
     </div>
 
-    <!-- ---------------------Long Term Program- end---------------------- -->
-
-    <!-- ---------------------what do people say?---------------------- -->
-    <!-- Meet Our Team Section -->
-    <section class="team-section" style="background-color: pink">
-      <div class="container">
-        <br />
-        <h2 style="text-align: center">What do people say?</h2>
-        <br />
-        <div id="teamCarousel" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="row">
-                <div class="col-md-6">
-                  <img
-                    src="{{asset('/assets/img/bg/1.jpg')}}"
-                    class="d-block w-100"
-                    alt="Team Member Image"
-                  />
-                </div>
-                <div class="col-md-6 team-member-content">
-                  <p>
-                    My daughter who is 2.9year old enjoys going to the ArtHive’s
-                    art classes.Every week she’s so excited to be at art class
-                    where she enjoys their “little project” which is theme
-                    based.Ms.Varshini,her art instructor is so kind and patient.
-                    Images be loware my favourites of my daughter’s art-theme
-                    autumn. Highly recommend their classes.
-                  </p>
-                  <span><b>Jane Smith</b></span>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="row">
-                <div class="col-md-6">
-                  <img
-                    src="{{asset('/assets/img/bg/1.jpg')}}"
-                    class="d-block w-100"
-                    alt="Team Member Image"
-                  />
-                </div>
-                <div class="col-md-6 team-member-content">
-                  <p>
-                    My daughter who is 2.9year old enjoys going to the ArtHive’s
-                    art classes.Every week she’s so excited to be at art class
-                    where she enjoys their “little project” which is theme
-                    based.Ms.Varshini,her art instructor is so kind and patient.
-                    Images be loware my favourites of my daughter’s art-theme
-                    autumn. Highly recommend their classes.
-                  </p>
-                  <span><b>Jane Smith</b></span>
-                </div>
-              </div>
-            </div>
-            <!-- Add more carousel items as needed -->
-          </div>
-          <a
-            class="carousel-control-prev"
-            href="#teamCarousel"
-            role="button"
-            data-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a
-            class="carousel-control-next"
-            href="#teamCarousel"
-            role="button"
-            data-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-    </section>
     @include('footer')
-    <!-- End Meet Our Team Section -->
 
-    <!-- ---------------------what do people say? end---------------------- -->
+    <!-- ---------------------Long Term Program- end---------------------- -->
 
     <!-- End Meet Our Team Section -->
     <!-- Bootstrap JS (Optional, if needed for other Bootstrap components) -->

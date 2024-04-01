@@ -1084,17 +1084,17 @@
             </div>
         </div>
     </div>
-
+@include('footer')
     <!-- <div class="">
         <center class="btncenter"><button class="btn2">Click Here</button></center>
     </div> -->
 
-    <script>
+    <!-- <script>
         function redirectToPage() {
             // Replace 'target_page.html' with the URL of the page you want to redirect to
             window.location.href = 'book2.php';
         }
-    </script>
+    </script> -->
 
 
 

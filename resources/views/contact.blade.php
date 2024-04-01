@@ -482,7 +482,7 @@
           @csrf
           <h3 class="title">Contact us</h3>
           <div class="input-container">
-            <input type="text" name="fname" class="input" />
+            <input type="text" name="fname" class="input" required />
             <label for="">First Name</label>
             <span>First Name</span>
             @if($errors->has('fname'))
@@ -490,20 +490,26 @@
             @endif
           </div>
           <div class="input-container">
-            <input type="text" name="lname" class="input" />
+            <input type="text" name="lname" class="input"  required />
             <label for="">Last Name</label>
-            <span>Last Name</span>
+            @if($errors->has('lname'))
+              <div class="error"></div>
+            @endif
           </div>
 
           <div class="input-container">
-            <input type="tel" name="mob" class="input" />
+            <input type="tel" name="mob" class="input" required />
             <label for="">Phone</label>
-            <span>Phone</span>
+            @if($errors->has('mob'))
+              <div class="error"></div>
+            @endif
           </div>
-          <div class="input-container textarea">
+          <div class="input-container textarea" required>
             <textarea name="msg" class="input"></textarea>
             <label for="">Message</label>
-            <span>Message</span>
+            @if($errors->has('msg'))
+              <div class="error"></div>
+            @endif
           </div>
           <br>
 
@@ -542,7 +548,7 @@
 
 </script>
 
-@include('footer2');
+@include('footer');
 
 
 </html>

@@ -487,7 +487,7 @@
                         @csrf
                         <div class="form-group">
                             <input type="text" class="form-control" id="yourname" name="name"
-                                placeholder="Your Name">
+                                placeholder="Your Name" value="{{old('name')}}" required>
 
                             <span id="un" class="text-danger font-weight-bold">
                                 @error('name')
@@ -500,7 +500,7 @@
 
                         <div class="form-group">
                             <input type="number" class="form-control" id="studying" placeholder="Contact No"
-                                name="mobile" min='10' >
+                                name="mobile" min='10' value="{{old('mobile')}}" required>
 
                             <span id="mb" class="text-danger font-weight-bold">
                             @error('mobile')
@@ -512,7 +512,7 @@
 
                         <div class="form-group">
                             <input type="number" class="form-control" id="studying" placeholder="age" name="age"
-                                min='2'>
+                                min='2' value="{{old('age')}}" required>
 
                             <span id="mb" class="text-danger font-weight-bold">
                             @error('age')
@@ -523,7 +523,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control" id="studying" placeholder="email" name="email">
+                            <input type="text" class="form-control" id="studying" placeholder="email" name="email" value="{{old('email')}}" required>
 
                             <span id="mb" class="text-danger font-weight-bold">
                             @error('email')

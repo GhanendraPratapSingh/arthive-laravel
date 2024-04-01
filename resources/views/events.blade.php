@@ -215,10 +215,8 @@ include('banner.php');
                     </section>
 
 <!--------------------------------new section end----->
-
+@include('footer')
  
 </body>
-   <?php
-include('footer.php')
-?>
+
 </html>

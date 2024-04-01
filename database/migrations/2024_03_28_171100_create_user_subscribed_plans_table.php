@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bookings', function (Blueprint $table) {
+        Schema::create('user_subscribed_plans', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
             $table->string('payment_id');
-            $table->date('slot_date');
-            $table->string('slot_time');
-            $table->integer('quantity');
-            $table->string('booking_type');
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bookings');
+        Schema::dropIfExists('user_subscribed_plans');
     }
 };

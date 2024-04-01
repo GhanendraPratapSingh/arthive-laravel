@@ -1,281 +1,428 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- Mirrored from www.trpentertainment.com/mpcg by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 11 Aug 2021 04:08:39 GMT -->
+  <!-- Added by HTTrack -->
+  <meta
+    http-equiv="content-type"
+    content="text/html;charset=utf-8"
+  /><!-- /Added by HTTrack -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <link rel="stylesheet" href="/style.css">
-    <link href="{{asset('/assets/css/jquery-ui.min.css')}}" rel="stylesheet" type="text/css">
-    <!-- CSS | menuzord megamenu skins -->
-    <link id="menuzord-menu-skins" href="{{asset('/assets/css/menuzord-skins/menuzord-rounded-boxed.css')}}" rel="stylesheet" />
-    <!-- CSS | Main style file -->
-    <link href="{{asset('/assets/css/style-main.css')}}" rel="stylesheet" type="text/css">
-    <!-- CSS | Preloader Styles -->
-    <link href="{{asset('/assets/css/preloader.css')}}" rel="stylesheet" type="text/css">
-    <!-- CSS | Custom Margin Padding Collection -->
-    <link href="{{asset('/assets/css/custom-bootstrap-margin-padding.css')}}" rel="stylesheet" type="text/css">
-    <!-- external javascripts -->
-    <script src="{{asset('/assets/js/jquery-2.2.4.min.js')}}"></script>
-    <script src="{{asset('/assets/js/jquery-ui.min.js')}}"></script>
-    <script src="{{asset('/assets/js/bootstrap.min.js')}}"></script>
-    <link href="https://fonts.cdnfonts.com/css/garet" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us</title>
-</head>
-<style>
-    * {
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+    />
+
+    <link href="./style.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+      body {
+        background: url("./images/");
+        background-position: top;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      #slider {
+        overflow: hidden;
+      }
+
+      #slider figure {
+        position: relative;
+        width: 500%;
         margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+        left: 0;
+        animation: 20s slider infinite;
+      }
 
-    }
+      #slider figure img {
+        width: 20%;
+        float: left;
+      }
 
-    body {
-        /* font-family: 'Garet Light' !important; */
-        font-family: "Poppins" !important;
-    }
+      @keyframes slider {
+        0% {
+          left: 0;
+        }
 
-    .main {
+        20% {
+          left: 0;
+        }
+
+        25% {
+          left: -100%;
+        }
+
+        45% {
+          left: -100%;
+        }
+
+        50% {
+          left: -200%;
+        }
+
+        70% {
+          left: -200%;
+        }
+
+        75% {
+          left: -300%;
+        }
+
+        95% {
+          left: -300%;
+        }
+
+        100% {
+          left: -400%;
+        }
+      }
+    </style>
+
+    <style>
+      .frm ::placeholder {
+        color: black;
+        font-weight: bold;
+      }
+
+      .swiper-container {
         width: 100%;
-        height: 100vh;
-        margin: auto;
-        padding: 50px 0;
-        display: block;
-        overflow-x: hidden;
-    }
+        height: 100%;
+      }
 
-
-
-    .Wrap_content {
-        width: 900px;
-        margin: auto;
-        display: block;
-    }
-
-    ol {
-        margin-bottom: 20px;
-    }
-
-    ol P {
-        text-align: CENTER;
-        padding: 15px;
-        margin: 0px 89px;
-    }
-
-    h1 {
+      .swiper-slide {
+        position: relative;
         text-align: center;
-        padding: 20px;
-        font-size: 30px;
-        /* padding-right: 87px; */
-    }
+        font-size: 18px;
+        background: linear-gradient(
+          to right,
+          rgb(232, 236, 236),
+          rgb(224, 220, 221)
+        );
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
 
+      .swiper-wrapper img {
+        /* width: 100%; */
+        height: 400px;
+        object-fit: cover;
+        background-position: center;
+        background-size: cover;
+      }
 
+      .swipe-wrapper {
+        position: absolute;
+      }
 
-    @media screen and (max-width: 480px) {
-        .Wrap_content {
-            width: 100%;
-            display: inline;
-            text-align: center;
+      #sub {
+        background-color: #cd0257 !important;
+        border-color: transparent;
+
+        border-radius: 2%;
+        text-align: center;
+        animation: radial-pulse 1s infinite;
+      }
+
+      .swiper-wrapper .btn {
+        position: absolute;
+
+        font-family: "Times New Roman", Times, serif !important;
+        color: black;
+        font-size: 25px;
+        font-weight: 600;
+        padding: 12px 24px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        top: 0;
+        right: 0;
+        background-color: transparent;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .swiper-wrapper .btn {
+          padding-left: 180px;
         }
+      }
 
-        ol P {
-            margin: 0 40px;
-            text-align: justify;
+      @media only screen and (max-width: 400px) {
+        .swiper-wrapper .btn {
+          padding-left: 180px;
         }
+      }
+    </style>
+    <style>
+        .container-fluid {
+  background-color: #43b443;
+  width: 100%;
+  height: 100vh;
+  padding: 0px 20px;
+}
+.row.main-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 20px;
+}
 
-        P {
-            margin: 0 20px;
-            padding: 20px 0;
-            text-align: justify;
-        }
+.column.main-colum {
+  flex-basis: 48%; /* Adjust as needed */
+  margin-bottom: 20px; /* Adjust spacing */
+}
 
+@media screen and (max-width: 768px) {
+  .column.main-colum {
+    flex-basis: 100%; /* Full width on smaller screens */
+  }
+}
 
-        h1 {
-            /* padding-right: 43px; */
-            font-size: 25px;
-        }
+/* Additional styling for the image */
+img {
+  width: 100%; /* Ensures the image takes up the full width of its container */
+  height: auto; /* Allows the image to scale proportionally */
+  max-width: 100%; /* Ensures the image does not exceed its original size */
+  max-height: 350px; /* Set maximum height as per your requirement */
+}
 
+/* ------------------------meet our team--------------------- */
+/* Custom CSS */
+.team-section {
+  padding: 50px 0;
+  background-color: #f8f9fa; /* Adjust as needed */
+}
 
-    }
-</style>
+.team-member {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
 
-<body>
-@include ('header');
-    @include ('banner');
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
+.team-member img {
+  max-width: 100%;
+  height: auto;
+}
 
+.team-member-content {
+  flex-basis: 60%; /* Adjust width of content column */
+  padding: 0 20px; /* Adjust spacing */
+}
 
-                    <h4 class="font-weight-400">ABOUT US </h4>
+.team-member-content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
 
-                    <p> The Art Hive was a pet project of our founder, Abinaya Devakumar. It started as an art studio
-                        focused on providing a meaningful place for creativity and art to bloom without restrictions for
-                        toddlers, kids, young adults and even adults while focusing on a diverse range of interests.
-                        The most significant part of our focus is on children's artistic and creative development while
-                        also nurturing their passion and freeing them of the shackles of rigidity present in many
-                        mainstream art studios or classes. We are based in Anna Nagar, Chennai and have been catering to
-                        multiple loving little ones creatively and joyfully.
-                        The Art Hive is a platform for art and creativity. With an exclusive toddler program based on
-                        art and sensory, The Art Hive is a one-of-a-kind art experience centre for kids with activities
-                        based on art, craft, clay modelling and much more. We love to create and explore art. The Art
-                        Hive is a creativity retreat for all art lovers. Join the Art Hive to Explore art creatively.
-                    </p>
+.team-member-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.carousel-control-next-icon {
+  background-color: blue;
+}
+@media (max-width: 768px) {
+  .team-member {
+    flex-direction: column;
+    text-align: center;
+  }
 
-                    <h1 class="font-weight-400">MEET THE TEAM</h1>
-                    <h3 class="font-weight-400">Abinaya Devakumar</h3>
-                    <h3 class="font-weight-400">Founder & Creative Head
-                    </h3>
+  .team-member-content {
+    flex-basis: 100%;
+    margin-top: 20px;
+  }
+}
+/* ------------------------meet our team- end-------------------- */
 
+    </style>
 
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <!-- Swiper -->
+  </head>
 
+  <body>
+    @include('header');
+    <div class="swiper-container laptop" id="slider">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img alt="sliderimage1" id="image1" src="{{asset('/assets/img/bg/bg3.jpg')}}" />
+        </div>
 
+        <div class="swiper-button-next"></div>
+        <!--<div class="swiper-button-prev"></div>-->
+      </div>
 
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+      <!-- Add Arrows -->
+    </div>
 
-                    <!--<div class="container">-->
-                    <!--<div class="row">-->
-                    <div class="col-md-6 mb-30">
-                        <div class="esc-heading lr-line left-heading">
-                            <!-- <div class="heading-line-bottom">-->
-                            <!--    <h4 class="heading-title">Vimeo</h4>-->
-                            <!--</div> -->
-                        </div>
-                        <div class="fluid-video-wrapper">
+    <!-- Swiper JS -->
 
-                            <img src="assets/img/The.jpg" alt="image">
-                        </div>
-                    </div>
-                    <!--<div class="col-md-6 mb-30">-->
-                    <!--    <div class="esc-heading lr-line left-heading">-->
-                    <!--         <div class="heading-line-bottom">-->
-                    <!--            <h4 class="heading-title">Youtube</h4>-->
-                    <!--        </div> -->
-                    <!--    </div>-->
-                    <!--    <div class="fluid-video-wrapper">-->
-                    <!--         <iframe width="560" height="315" src="https://www.youtube.com/embed/oIDqz2BrVec"-->
-                    <!--            allowfullscreen></iframe> -->
-                    <!--            <img src="assets/img/cr-5.jpeg" alt="image">-->
-                    <!--    </div>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <div class="row">
-                        <div class="col-md-6 mb-30">
+    <!-- ---------------------A letter from the background----------------------- -->
+    <div class="container-fluid">
+      <br /><br />
+      <h1>A Letter from The Founder</h1>
+      <div class="row main-wrapper">
+        <div class="column main-colum">
+          <p>
+            It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout. The point
+            of using Lorem Ipsum is that it has a more-or-less normal
+            distribution of letters, as opposed to using 'Content here, content
+            here', making it look like readable English. Many desktop publishing
+            packages and web page editors now use Lorem Ipsum as their default
+            model text, and a search for
+          </p>
+        </div>
+        <div class="column">
+          <img src="{{asset('/assets/img/bg/1.jpg')}}" alt="Your Image" />
+        </div>
+      </div>
+    </div>
 
-                        </div>
-                        <div class="col-md-6 mb-30">
+    <!-- ---------------------A letter from the background end----------------------- -->
 
-                        </div>
-                    </div>
-                    <!--</div>-->
-
-
-
-                    <!--<div class="col-md-3 mb-10">-->
-
-                    <!--                                   <div class="fluid-video-wrapper">-->
-                    <!--                                        <iframe-->
-                    <!--                                           src="http://player.vimeo.com/video/24302498?title=0&amp;byline=0&amp;portrait=0"-->
-                    <!--                                           width="640" height="360" title="Creative" allowfullscreen></iframe> -->
-                    <!--                                           <img src="assets/img/The.jpg" alt="image">-->
-                    <!--                                   </div>-->
-                    <!--                               </div>-->
-
-
-
-
-
-
-                    <p> Abinaya Devakumar is an Architect and Product Designer by profession and a self-taught artist by
-                        passion.She started painting to find the little joys of life along with her 1-year-old four
-                        years back during the lockdown. She loves to work with mediums like Gouache, Pen & Ink. She
-                        loves experimenting with water colours and works with artworks like botanicals and landscapes,
-                        but her all-time favourite would be surreal and concept-based artworks. After a decade's break,
-                        she took to explore her love for the arts again. For her, art is joy, therapy and a cherished
-                        dream. With all the hardships, art is one way we can lose ourselves to the colours of life, and
-                        this is her small contribution to adding some colour and spark to the lives of all art lovers.
-                    </p>
-
-
-                    <h3 class="font-weight-400">Deepa</h3>
-                    <h3 class="font-weight-400">Creative Resident Artist
-                    </h3>
-
-                    <p>Deepa Rakshana is an architect and a passionate artist. She is a person with an awe of the
-                        natural world and its creatures. Being deeply inspired by nature, her paintings usually are
-                        based on nature-oriented themes depicting the beauty of the wild. She's a bird-watcher, a bird
-                        photographer, and an active volunteer in an animal NGO keenly awaiting to enter the jungle.</p>
-
-                    <!--<section>-->
-
-
-
-
-
-                    <!--    <div class="container">-->
-                    <!--        <div class="row">-->
-                    <!--<div class="col-md-6 mb-30">-->
-                    <!--    <div class="esc-heading lr-line left-heading">-->
-                    <!--         <div class="heading-line-bottom">-->
-                    <!--            <h4 class="heading-title">Vimeo</h4>-->
-                    <!--        </div> -->
-                    <!--    </div>-->
-                    <!--    <div class="fluid-video-wrapper">-->
-                    <!--         <iframe-->
-                    <!--            src="http://player.vimeo.com/video/24302498?title=0&amp;byline=0&amp;portrait=0"-->
-                    <!--            width="640" height="360" title="Creative" allowfullscreen></iframe> -->
-                    <!--            <img src="assets/img/The.jpg" alt="image">-->
-                    <!--    </div>-->
-                    <!--</div>-->
-                    <!--            <div class="col-md-6 mb-30">-->
-                    <!--                <div class="esc-heading lr-line left-heading">-->
-                    <!--                     <div class="heading-line-bottom">-->
-                    <!--                        <h4 class="heading-title">Youtube</h4>-->
-                    <!--                    </div> -->
-                    <!--                </div>-->
-                    <!--                <div class="fluid-video-wrapper">-->
-                    <!--                     <iframe width="560" height="315" src="https://www.youtube.com/embed/oIDqz2BrVec"-->
-                    <!--                        allowfullscreen></iframe> -->
-                    <!--                        <img src="assets/img/cr-5.jpeg" alt="image">-->
-                    <!--                </div>-->
-                    <!--            </div>-->
-                    <!--        </div>-->
-                    <!--        <div class="row">-->
-                    <!--            <div class="col-md-6 mb-30">-->
-
-                    <!--            </div>-->
-                    <!--            <div class="col-md-6 mb-30">-->
-
-                    <!--            </div>-->
-                    <!--        </div>-->
-                    <!--    </div>-->
-                    <!--</section>-->
-
-
-
-
-
-
-
-
-
+    <!-- ------------------------------meet our team--------------------------- -->
+    <!-- Meet Our Team Section -->
+    <section class="team-section">
+      <div class="container">
+        <div id="teamCarousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-md-6">
+                  <img
+                    src="{{asset('assets/img/bg/1.jpg')}}"
+                    class="d-block w-100"
+                    alt="Team Member Image"
+                  />
                 </div>
-
-
-
-
-
-
-
-
-
+                <div class="col-md-6 team-member-content">
+                  <h2>John Doe</h2>
+                  <p>
+                    It is a long established fact that a reader will be
+                    distracted by the readable content of a page when looking at
+                    its layout. The point of using Lorem Ipsum is that it has a
+                    more-or-less normal distribution of letters, as opposed to
+                    using
+                  </p>
+                </div>
+              </div>
             </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-6">
+                  <img
+                    src="{{asset('assets/img/bg/1.jpg')}}"
+                    class="d-block w-100"
+                    alt="Team Member Image"
+                  />
+                </div>
+                <div class="col-md-6 team-member-content">
+                  <h2>Jane Smith</h2>
+                  <p>
+                    It is a long established fact that a reader will be
+                    distracted by the readable content of a page when looking at
+                    its layout. The point of using Lorem Ipsum is that it has a
+                    more-or-less normal distribution of letters, as opposed to
+                    using
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Add more carousel items as needed -->
+          </div>
+          <a
+            class="carousel-control-prev"
+            href="#teamCarousel"
+            role="button"
+            data-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#teamCarousel"
+            role="button"
+            data-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-        </div>
+      </div>
     </section>
-</body>
-@include('footer2')
+    @include('footer');
+    <!-- End Meet Our Team Section -->
+    <!-- Bootstrap JS (Optional, if needed for other Bootstrap components) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
+    <!-- ------------------------------meet our team------------------------ -->
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+      var swiper = new Swiper(".swiper-container", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+
+  <!-- Mirrored from www.trpentertainment.com/mpcg by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 11 Aug 2021 04:09:47 GMT -->
 </html>

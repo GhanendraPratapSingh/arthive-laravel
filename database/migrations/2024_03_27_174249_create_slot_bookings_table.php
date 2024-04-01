@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('art_work_subscriptions', function (Blueprint $table) {
+        Schema::create('slot_bookings', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
             $table->string('payment_id');
-            $table->string('type');
+            $table->date('slot_date');
+            $table->string('slot_time');
+            $table->integer('quantity');
+            $table->string('booking_type');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('art_work_subscriptions');
+        Schema::dropIfExists('slot_bookings');
     }
 };

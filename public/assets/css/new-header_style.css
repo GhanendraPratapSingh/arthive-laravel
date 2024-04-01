@@ -1,0 +1,187 @@
+/* .high-class{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+.new-header-top-heading{
+    background-color: black;
+    color: white;
+    font-size: 2.0rem;
+    width:100% !important;
+    text-align: center;
+    /* margin-bottom: -35px; */
+}
+.header-img-logo{
+    width: 20% !important;
+}
+
+/* -------------------------------------------------------------------------------------------------------- */
+/* nav bar styling */
+.nav-bar-main{
+    border: none !important;
+    border-color:none !important;
+    background-color: none !important;
+}
+.dropdown-submenu{ position: relative; }
+
+.dropdown-submenu>.dropdown-menu{
+  top:0;
+  left:100%;
+  margin-top:-6px;
+  margin-left:-1px;
+  -webkit-border-radius:0 6px 6px 6px;
+  -moz-border-radius:0 6px 6px 6px;
+  border-radius:0 6px 6px 6px;
+}
+
+.dropdown-submenu>a:after{
+  display:block;
+  content:" ";
+  float:right;
+  width:0;
+  height:0;
+  border-color:transparent;
+  border-style:solid;
+  border-width:5px 0 5px 5px;
+  border-left-color:black;
+  margin-top:5px;margin-right:-10px;
+}
+.dropdown-submenu:hover>a:after{
+  border-left-color:#555;
+}
+.dropdown-submenu.pull-left{ float: none; }
+.dropdown-submenu.pull-left.dropdown-menu{
+  left: -100%;
+  margin-left: 10px;
+  -webkit-border-radius: 6px 0 6px 6px;
+  -moz-border-radius: 6px 0 6px 6px;
+  border-radius: 6px 0 6px 6px;
+}
+.nav-new-head{
+display: none !important; 
+
+
+
+}
+.new-parent-navbar {
+  align-items: center;
+  color: black !important;
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------- */
+/* kids dropdown */
+.nav-bar-main .new-parent-navbar .active a{
+    background-color: white !important;
+    color: black !important;
+}
+.nav-bar-main .new-parent-navbar li a {
+    color: black !important;
+}
+
+.kids-dropdown .kids-dropdown-menu{
+    background-color: pink;
+    border: none;
+    margin-top: 5px;
+}
+.kids-dropdown .kids-dropdown-menu li{
+    background-color: pink;
+}
+/* kids dropdown  end*/
+
+/* --------------------------------------------------------------------------------------------------------------- */
+
+/* adults dropdown  end*/
+
+.nav-bar-main .new-parent-navbar>.adults-dropdown .adults-dropdown-menu{
+    background-color: blue;
+
+}
+.adults-dropdown .adults-dropdown-menu{
+    background-color: blue;
+    border: none;
+    margin-top: 5px;
+}
+.adults-dropdown .adults-dropdown-menu li{
+    background-color: blue;
+}
+/* adults dropdown  end*/
+
+.navbar-collapse.collapse {
+    display: flex !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+}
+
+ /* Custom CSS to center-align header contents */
+ .navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+   
+}
+
+.nav-item {
+    text-align: center;
+}
+
+.navbar {
+    justify-content: center;
+}
+.navbar-toggle {
+    position: fixed;
+    top: 10px; /* Adjust the top position as needed */
+    right: 10px; /* Adjust the right position as needed */
+    z-index: 1000; /* Ensure it's above other elements */
+}
+.navbar-default {
+    background-color: #fff; /* Change the background color as needed */
+}
+
+.sticky .navbar-default {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow when sticky */
+}
+/* navbar styling end */
+/* ------------------------------------------------------------------------------------------------------------------- */
+
+
+@media only screen and (max-width: 768px) {
+
+    /* .high-class{
+        display: block;
+    } */
+
+    .new-header-top-heading h3{
+        width: auto;
+        font-size: 1.0rem !important;
+        margin-bottom: 0px;
+    }
+
+    .header-img-logo{
+        width: auto;
+    }
+/* ----------------------------------------------------------------------------------------------------------------- */
+    /* navbar styling */
+   
+    .navbar-nav{
+        display: flex !important;
+    }
+
+    .nav-bar-main{
+        background-color: white !important;
+    }
+    /* .nav-new-head .collapse {
+     display: block !important;
+          
+    } */
+    .navbar-collapse {
+        display: none !important;
+             
+       }
+      /* 
+   /* ---------------------------------------------------------------------------------------------------------------- */
+    }
+
+  
