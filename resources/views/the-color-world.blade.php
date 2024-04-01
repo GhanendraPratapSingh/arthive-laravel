@@ -504,7 +504,7 @@
 
           <!-- Add more features as needed -->
         </ul>
-        <form action="{{route('creativetoddler.payment.information.show')}}" method="post">
+        <form action="{{route('theColorWorld.payment.information.show')}}" method="post">
             @csrf
             <input type="hidden" value="3899" name="price"/>
             <button class="btn-primary" type="submit"> <center><b>3,899₹ </b></center></button>

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('order_id');
             $table->string('razorpay_payment_id');
             $table->string('razorpay_order_id');
+            $table->string('razorpay_signature');
             $table->float('payment_amount',8,2);
             $table->string('payment_mode');
             $table->string('order_type');
