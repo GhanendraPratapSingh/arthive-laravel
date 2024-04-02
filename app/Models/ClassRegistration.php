@@ -13,4 +13,8 @@ class ClassRegistration extends Model
         'payment_id',
         'class_name',
     ];
+
+    public function getUserDetails(){
+        return $this->belongsTo(User::class);
+    }
 }

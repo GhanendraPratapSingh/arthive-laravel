@@ -21,11 +21,28 @@ class User extends Model
     }
 
     public function getArtWorkSubscribedUser(){
-        return $this->hasMany(ArtWorkSubscription::class);
+        return $this->hasMany(UserSubscribedPlan::class);
     }
 
     public function getSlotBookedUser(){
-        return $this->hasMany(Booking::class);
+        return $this->hasMany(SlotBooking::class);
     }
+
+    public function getPaymentDetails(){
+        return $this->hasMany(Payment::class);
+    }
+
+    public function getSinglePaymentDetails(){
+        return $this->hasOne(Payment::class);
+    }
+
+    public function getSlotBookingDetails(){
+        return $this->hasMany(SlotBooking::class);
+    }
+
+    public function getSubscriptionDetails(){
+       return  $this->hasOne(UserSubscribedPlan::class);
+    }
+ 
     
 }

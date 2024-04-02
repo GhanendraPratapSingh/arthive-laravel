@@ -204,6 +204,7 @@ class BookingController extends Controller
         }
         return view('payment.information', compact('price', 'user_type', 'order_type', 'content_type'));
     }
+
     public function theColorWorldPaymentShow(Request $request)
     {
         $price = $request->price ?? 0;
@@ -226,6 +227,19 @@ class BookingController extends Controller
         }
         return view('payment.information', compact('price', 'user_type', 'order_type', 'content_type'));
     }
+
+    public function adultsLongTermPaymentShow(Request $request)
+    {
+        $price = $request->price ?? 0;
+        $order_type = 'ADULTS_LONG_TERM_PROGRAM';
+        $user_type = 'ADULTS_LONG_TERM_PROGRAM_USER';
+        $content_type = 'ADULTS_LONG_TERM_PROGRAM_SUBSCRIPTION';
+        if ($price <= 0) {
+            return redirect()->back();
+        }
+        return view('payment.information', compact('price', 'user_type', 'order_type', 'content_type'));
+    }
+    
     
     
     

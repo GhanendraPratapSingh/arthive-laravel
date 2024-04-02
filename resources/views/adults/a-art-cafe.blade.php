@@ -885,7 +885,7 @@
         </div>
 
         <div class="btncontainer">
-            <center><button class="btn" style="margin-bottom:10px">Click here</button></center>
+            <center><a class="btn" style="margin-bottom:10px" href="{{url('/calender-art-hour')}}">Click here</a></center>
         </div>
         <div style="margin-top: 80px;
     margin-bottom: 60px;">

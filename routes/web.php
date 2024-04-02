@@ -57,9 +57,7 @@ Route::get('/creative-toddler-program',function(){
 Route::get('/d-kids-weekend-program',function(){
     return view('d-kids-weekend-program');
 });
-Route::get('/easter-sensory',function(){
-    return view('easer-sensory');
-});
+
 Route::get('/young-artist-club',function(){
     return view('young-artist-club');
 });
@@ -71,6 +69,9 @@ Route::get('/wall-art-workshop',function(){
     return view('wall-art-workshop');
 });
 
+Route::get('/easter-sensory',function(){
+    return view('easer-sensory');
+});
 
 
 
@@ -99,13 +100,14 @@ Route::controller(BookingController::class)->group(function(){
     Route::post('/save-kids-slot-data','saveKidsSlotData')->name('timeslot.bookingDetails');
     Route::post('/kids-payment-process','kidsPaymentProcess');
 
-    // kids information
+    // payment pages
     Route::post('/kids-payment-page','dKidsPaymentShow')->name('kids.payment.information.show');
     Route::post('/toddler-payment-page','toddlerPaymentShow')->name('toddler.payment.information.show');
     Route::post('/creative-toddler-payment-page','creativeToddlerPaymentShow')->name('creativetoddler.payment.information.show');
     Route::post('/little-project-payment-page','theLittleProjectPaymentShow')->name('theLittleProject.payment.information.show');
     Route::post('/the-color-world-payment-page','theColorWorldPaymentShow')->name('theColorWorld.payment.information.show');
     Route::post('/young-artist-club-payment-page','youngArtistClubPaymentShow')->name('youngArtistClub.payment.information.show');
+    Route::post('/adults-long-term-payment-page','adultsLongTermPaymentShow')->name('adultsLongTermProgram.payment.information.show');
 
     Route::post('/artwork-initiate-payment','dKidsInitiatePayment')->name('artwork.initiatePayment');
     Route::post('/artwork-connfirm-payment','dKidsConnfirmPayment')->name('artwork.payment.validate');
@@ -147,12 +149,30 @@ Route::prefix('admin')->controller(AdminController::class)->group(function(){
         });
         Route::get('/home','index')->name('admin.home');
         Route::get('/logout','AdminLogout');
-        Route::get('registered-users','getRegisteredUser');
+        Route::get('class-registerations','getClassRegisterations');
         Route::get('/slot-bookings','getSlotBookingData');
         Route::get('/artwork','getPaidUsers');
         Route::get('/mannual-booking','manualBooking');
         Route::post('/save-mannual-booking','saveManualBooking')->name('admin.mannual.register');
         Route::get('/contact-us','getContactUsData')->name('admin.contactUs');
+
+
+        // routes for kids
+        // Route::post('/toddler-payment-page','toddlerPaymentShow')->name('toddler.payment.information.show');
+        Route::get('/creative-toddler','getKidsCreativeToddlerData')->name('creativetoddler.information');
+        Route::get('/little-project','getTheLittleProjectData')->name('theLittleProject.information');
+        Route::get('/the-color-world','getTheColorWorlData')->name('theColorWorld.information');
+        Route::get('/kids-art-labs','getKidsArtLabs')->name('theKidsArtLab.information');
+        Route::get('/toddller-art-lab','getToddllerArtLab')->name('toddllerArtLab.information');
+
+        Route::get('/young-artist-club','getYoungArtistClubData')->name('youngArtistClub.information');
+        // Route::get('/private-art-party','getPrivateArtPrivate')->name('privateArtParty.information');
+        
+        Route::get('/adults-long-term','adultsLongTermData')->name('adultsLongTermProgram.information');
+
+        
+
+    
         // Route::get('/{any}','index')->where('any', '.*');
         //event route
 

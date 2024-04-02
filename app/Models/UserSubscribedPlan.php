@@ -13,4 +13,8 @@ class UserSubscribedPlan extends Model
         'payment_id',
         'type'
     ];
+
+    public function scopeSubscriptionType($query,$type){
+        return $query->where('type',$type);
+    }
 }

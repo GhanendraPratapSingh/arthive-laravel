@@ -11,7 +11,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h5 class="m-0 font-weight-bold text-primary text-center">Registered User</h5>
+        <h5 class="m-0 font-weight-bold text-primary text-center">Kids Art Lab Users</h5>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -20,28 +20,27 @@
                     <tr>
                         <th>S NO : </th>
                         <th>Name</th>
-
+                        <th>Email</th>
                         <th>Mobile</th>
                         <th>Amount</th>
-
                         <th>Payment Status</th>
                         <th>Date</th>
-                        <th>Delete</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
 
                 <tbody>
                   @forelse ($data as $key=>$item)
                   <tr>
-                                <td class="text-center"><?= $key++ ?></td>
-                                <td>{{$item->yourname}}</td>
+                                <td class="text-center">{{ ++$key }}</td>
+                                <td>{{$item->name}}</td>
 
-                                <td>{{ $item->studing }}</td>
-                                <td>{{ $item->amount }}</td>
-
-                                <td>{{ $item->Payment_Status }}</td>
-                                <td>{{ $item->date }}</td>
-                                <td class="text-center "> <a onclick="return confirm('Are you sure want to delete ?')" class="btn btn-danger btn-sm " href="registerdelete.php?id=$item->id">Delete</a></td>
+                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->mobile }}</td>
+                                <td>{{ $item->getSinglePaymentDetails->payment_amount ?? "" }}</td>
+                                <td>{{ $item->getSinglePaymentDetails->payment_status }}</td>
+                                <td>{{ $item->getSinglePaymentDetails->created_at }}</td>
+                                <!-- <td class="text-center "> <a onclick="return confirm('Are you sure want to delete ?')" class="btn btn-danger btn-sm " href="registerdelete.php?id=$item->id">Delete</a></td> -->
                             </tr>
                   @empty
                     <tr>

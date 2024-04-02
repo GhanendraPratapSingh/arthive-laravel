@@ -25,8 +25,8 @@
                             <th>Slot time</th>
                             <th> No of Slot</th>
                             <th>Payment Status </th>
-                            <th>Booking (Date & Time)</th>
-                            <th>Delete </th>
+                            <th>Order Created At</th>
+                            <th>Action </th>
                         </tr>
                     </thead>
 
@@ -35,15 +35,15 @@
                     @forelse ($data as $key => $row)
                     <tr>
                         <td>{{ ++$key }} </td>
-                        <td>{{ $row->name }} </td>
-                        <td>{{ $row->mobile }} </td>
-                        <td>{{ $row->email }} </td>
-                        <td>{{ $row->date }} </td>
-                        <td>{{ $row->timeslot }} </td>
+                        <td>{{ $row->getUserDetails->name }} </td>
+                        <td>{{ $row->getUserDetails->mobile }} </td>
+                        <td>{{ $row->getUserDetails->email }} </td>
+                        <td>{{ $row->slot_date }} </td>
+                        <td>{{ $row->slot_time }} </td>
                         <td>{{ $row->quantity }} </td>
-                        <td>{{ $row->payment_status }} </td>
+                        <td>{{ $row->getPaymentDetails->payment_status }} </td>
                         <td>{{ $row->created_at }} </td>
-                        <td class="text-center "> <a onclick="return confirm('Are you sure want to delete ?')" class="btn btn-danger btn-sm " href="slotdelete.php?id={{$row->id}}">Delete</a></td>
+                        <!-- <td class="text-center "> <a onclick="return confirm('Are you sure want to delete ?')" class="btn btn-danger btn-sm " href="slotdelete.php?id={{$row->id}}">Delete</a></td> -->
                     </tr>
                     @empty
                         <tr>

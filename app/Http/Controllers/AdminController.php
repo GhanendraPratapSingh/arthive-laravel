@@ -8,6 +8,7 @@ use App\Models\Booking;
 use App\Models\ClassRegistration;
 use App\Models\ContactUs;
 use App\Models\Registration;
+use App\Models\SlotBooking;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -90,24 +91,92 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
-    public function getRegisteredUser(Request $request)
+    public function getClassRegisterations(Request $request)
     {
-        $data = User::get();
+        $data = User::join('class_registrations','users.id','=','class_registrations.user_id')->select('users.id','users.name','users.email','users.mobile')->get();
         // dd($data);
-        return view('admin.register_customer',compact('data'));
+        foreach($data as $d){
+            // dd(($d->getSinglePaymentDetails));
+        }
+        return view('admin.class_registrations',compact('data'));
     }
 
 
     public function getSlotBookingData(Request $request)
     {
-        $data = Booking::get();
-        return view('admin.slot',compact('data')); 
+        $data = SlotBooking::get();
+        // dd($data[0]->getUserDetails);
+        return view('admin.slot-bookings',compact('data')); 
+    }
+    public function getKidsCreativeToddlerData(Request $request)
+    {
+        $data = User::join('user_subscribed_plans',function($join){
+            $join->on('users.id','=','user_subscribed_plans.user_id')
+            ->where('type','CREATIVE_TODDLER_ART');
+        })->select('users.id','users.name','users.email','users.mobile')->get();
+        // dd($data[0]->getUserDetails);
+        return view('admin.kids.creative-toddler',compact('data')); 
     }
 
-
+    public function getTheLittleProjectData(Request $request)
+    {
+        $data = User::join('user_subscribed_plans',function($join){
+            $join->on('users.id','=','user_subscribed_plans.user_id')
+            ->where('type','THE_LITTLE_PROJECT');
+        })->select('users.id','users.name','users.email','users.mobile')->get();
+        // dd($data[0]->getUserDetails);
+        return view('admin.kids.the-little-project',compact('data')); 
+    }
+    public function getTheColorWorlData(Request $request)
+    {
+        $data = User::join('user_subscribed_plans',function($join){
+            $join->on('users.id','=','user_subscribed_plans.user_id')
+            ->where('type','THE_COLOR_WOLRD');
+        })->select('users.id','users.name','users.email','users.mobile')->get();
+        // dd($data[0]->getUserDetails);
+        return view('admin.kids.the-color-world',compact('data')); 
+    }
+    public function getKidsArtLabs(Request $request)
+    {
+        $data = User::join('user_subscribed_plans',function($join){
+            $join->on('users.id','=','user_subscribed_plans.user_id')
+            ->where('type','KIDS_ART');
+        })->select('users.id','users.name','users.email','users.mobile')->get();
+        // dd($data[0]->getUserDetails);
+        return view('admin.kids.kids-art-lab',compact('data')); 
+    }
+    public function getToddllerArtLab(Request $request)
+    {
+        $data = User::join('user_subscribed_plans',function($join){
+            $join->on('users.id','=','user_subscribed_plans.user_id')
+            ->where('type','TODDLER_ART');
+        })->select('users.id','users.name','users.email','users.mobile')->get();
+        // dd($data[0]->getUserDetails);
+        return view('admin.kids.toddller-art-lab',compact('data')); 
+    }
+    public function getYoungArtistClubData(Request $request)
+    {
+        $data = User::join('user_subscribed_plans',function($join){
+            $join->on('users.id','=','user_subscribed_plans.user_id')
+            ->where('type','YOUNG_ARTIST_CLUB');
+        })->select('users.id','users.name','users.email','users.mobile')->get();
+        // dd($data[0]->getUserDetails);
+        return view('admin.kids.young-artist-club',compact('data')); 
+    }
+    // public function getPrivateArtPrivate(Request $request)
+    // {
+    //     $data = User::join('user_subscribed_plans',function($join){
+    //         $join->on('users.id','=','user_subscribed_plans.user_id')
+    //         ->where('type','YOUNG_ARTIST_CLUB');
+    //     })->select('users.id','users.name','users.email','users.mobile')->get();
+    //     // dd($data[0]->getUserDetails);
+    //     return view('admin.kids.young-artist-club',compact('data')); 
+    // }
+    
+    
     public function getPaidUsers(Request $request)
     {
-        $data = Artwork::get();
+        // $data = ::get();
 
         // dd($data);
         return view('admin.artwork',compact('data'));

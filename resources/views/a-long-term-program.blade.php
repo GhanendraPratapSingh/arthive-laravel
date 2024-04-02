@@ -737,7 +737,14 @@
 
 
                     <div class="cardprice">
-                        <h4>2,000 ₹</h4>
+                    <form action="{{route('adultsLongTermProgram.payment.information.show')}}" method="post">
+                        @csrf
+
+                        <input type="hidden" value="2000" name="price"/>
+                        <input type="hidden" value="1" name="subscription_id"/>
+                        <center><button style="background-color: black;" type="submit">2,000 ₹</button></center>
+                    </form>
+                        <!-- <h4>2,000 ₹</h4> -->
                     </div>
                 </div>
             </div>
@@ -761,7 +768,14 @@
 
 
                     <div class="cardprice">
-                        <h4>4,000 ₹</h4>
+                    <form action="{{route('adultsLongTermProgram.payment.information.show')}}" method="post">
+                        @csrf
+
+                        <input type="hidden" value="4000" name="price"/>
+                        <input type="hidden" value="1" name="subscription_id"/>
+                        <center><button style="background-color: black;" type="submit">4,000 ₹</button></center>
+                    </form>
+                        <!-- <h4>4,000 ₹</h4> -->
                     </div>
                 </div>
             </div>
@@ -790,7 +804,14 @@
 
 
                     <div class="cardprice">
-                        <h4>6,000 ₹</h4>
+                    <form action="{{route('adultsLongTermProgram.payment.information.show')}}" method="post">
+                        @csrf
+
+                        <input type="hidden" value="6000" name="price"/>
+                        <input type="hidden" value="1" name="subscription_id"/>
+                        <center><button style="background-color: black;" type="submit">6,000 ₹</button></center>
+                    </form>
+                        <!-- <h4>6,000 ₹</h4> -->
                     </div>
                 </div>
             </div>
